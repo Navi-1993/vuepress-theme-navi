@@ -1,0 +1,29 @@
+{
+	"name": "@vuepress-weeget/vuepress-theme-thinktank",
+	"version": "0.0.1",
+	"description": "微革前端智库vuepress主题",
+	"keywords": [
+		"vuepress",
+		"vue",
+		"theme",
+		"thinktank"
+	],
+	"homepage": "",
+	"repository": {},
+	"license": "MIT",
+	"author": "Navi 1592193221@qq.com",
+	"main": "index.js",
+	"dependencies": {
+		"@vuepress-reco/vuepress-plugin-back-to-top": "^1.5.4",
+		"@vuepress-reco/vuepress-plugin-comments": "^1.4.6",
+		"@vuepress-reco/vuepress-plugin-loading-page": "^1.4.0",
+		"@vuepress-reco/vuepress-plugin-pagation": "^1.4.7",
+		"@vuepress-weeget/vuepress-theme-thinktank": "^0.0.1",
+		"@vuepress/plugin-blog": "1.9.2",
+		"@vuepress/plugin-medium-zoom": "1.5.2",
+		"docsearch.js": "2.6.3",
+		"md5": "2.2.1",
+		"valine": "1.4.14",
+		"vue-click-outside": "1.1.0"
+	}
+}
