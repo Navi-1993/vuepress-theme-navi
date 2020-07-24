@@ -1,7 +1,7 @@
 # vuepress-theme-navi
-![](https://img.shields.io/npm/v/vuepress-theme-navi.svg)
-![](https://img.shields.io/npm/dt/vuepress-theme-navi.svg)
-![](https://img.shields.io/npm/l/vuepress-theme-navi.svg)
+[![](https://img.shields.io/npm/v/vuepress-theme-navi.svg)](https://www.npmjs.com/package/vuepress-theme-navi)
+[![](https://img.shields.io/npm/dt/vuepress-theme-navi.svg)](https://www.npmjs.com/package/vuepress-theme-navi)
+[![](https://img.shields.io/npm/l/vuepress-theme-navi.svg)](https://github.com/Navi-1993/vuepress-theme-navi)
 
 ## 开发主题
 
