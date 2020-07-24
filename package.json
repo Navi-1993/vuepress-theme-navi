@@ -20,7 +20,6 @@
 		"@vuepress-reco/vuepress-plugin-comments": "^1.4.6",
 		"@vuepress-reco/vuepress-plugin-loading-page": "^1.4.0",
 		"@vuepress-reco/vuepress-plugin-pagation": "^1.4.7",
-		"@vuepress-weeget/vuepress-theme-thinktank": "^0.0.1",
 		"@vuepress/plugin-blog": "1.9.2",
 		"@vuepress/plugin-medium-zoom": "1.5.2",
 		"docsearch.js": "2.6.3",
