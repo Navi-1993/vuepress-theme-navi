@@ -1,15 +1,17 @@
 {
-	"name": "@vuepress-weeget/vuepress-theme-thinktank",
-	"version": "0.0.1",
-	"description": "微革前端智库vuepress主题",
+	"name": "vuepress-theme-navi",
+	"version": "1.0.0",
+	"description": "vuepress博客自用主题",
 	"keywords": [
 		"vuepress",
 		"vue",
-		"theme",
-		"thinktank"
+		"theme"
 	],
-	"homepage": "",
-	"repository": {},
+	"homepage": "https://www.wongxuefeng.com",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Navi-1993/vuepress-theme-navi.git"
+	},
 	"license": "MIT",
 	"author": "Navi 1592193221@qq.com",
 	"main": "index.js",
