@@ -1,13 +1,13 @@
 <template>
   <div
-    class="abstract-item">
-    <i v-if="item.frontmatter.sticky" class="iconfont thinktank-sticky"></i>
+    class="abstract-item"
+    @click="$router.push(item.path)">
+    <i v-if="item.frontmatter.sticky" class="iconfont reco-sticky"></i>
     <div class="title">
-      <i v-if="item.frontmatter.keys" class="iconfont thinktank-lock"></i>
+      <i v-if="item.frontmatter.keys" class="iconfont reco-lock"></i>
       <router-link :to="item.path">{{item.title}}</router-link>
     </div>
     <div class="abstract" v-html="item.excerpt"></div>
-    <hr class="hr">
     <PageInfo
       :pageInfo="item"
       :currentTag="currentTag">
@@ -36,7 +36,11 @@ export default {
   box-sizing: border-box;
   transition all .3s
   background-color var(--background-color)
-  .thinktank-sticky
+  cursor: pointer;
+  > * {
+    pointer-events: auto;
+  }
+  .reco-sticky
     position absolute
     top 0
     left 0
@@ -48,9 +52,11 @@ export default {
   .title
     position: relative;
     font-size: 1.28rem;
-    line-height: 36px;
+    line-height: 46px;
     display: inline-block;
-    .thinktank-lock
+    a
+      color: var(--text-color);
+    .reco-lock
       font-size 1.28rem
       color $accentColor
     &:after
@@ -73,7 +79,6 @@ export default {
       transform: scaleX(1);
   .tags
     .tag-item
-      cursor: pointer;
       &.active
         color $accentColor
       &:hover

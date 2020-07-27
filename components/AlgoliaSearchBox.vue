@@ -4,7 +4,7 @@
     class="algolia-search-wrapper search-box"
     role="search"
   >
-    <i class="iconfont thinktank-search"></i>
+    <i class="iconfont reco-search"></i>
     <input
       id="algolia-search-input"
       class="search-query"
@@ -33,7 +33,7 @@ export default {
         import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.css')
       ]).then(([docsearch]) => {
         docsearch = docsearch.default
-        const { algoliaOptions = {}} = userOptions
+        const { algoliaOptions = {} } = userOptions
         docsearch(Object.assign(
           {},
           userOptions,

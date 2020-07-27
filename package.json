@@ -1,6 +1,6 @@
 {
 	"name": "vuepress-theme-navi",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "vuepress博客自用主题",
 	"keywords": [
 		"vuepress",
@@ -10,7 +10,7 @@
 	"homepage": "https://www.wongxuefeng.com",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Navi-1993/vuepress-theme-navi.git"
+		"url": "https://github.com/Navi-1993/vuepress-theme-navi.git"
 	},
 	"license": "MIT",
 	"author": "Navi 1592193221@qq.com",

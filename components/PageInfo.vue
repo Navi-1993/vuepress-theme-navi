@@ -1,33 +1,31 @@
 <template>
   <div>
     <i
-      class="iconfont thinktank-account"
+      class="iconfont reco-account"
       v-if="pageInfo.frontmatter.author || $themeConfig.author || $site.title">
       <span>{{ pageInfo.frontmatter.author || $themeConfig.author || $site.title }}</span>
     </i>
     <i
       v-if="pageInfo.frontmatter.date"
-      class="iconfont thinktank-date">
+      class="iconfont reco-date">
       <span>{{ pageInfo.frontmatter.date | formatDateValue }}</span>
     </i>
     <i
       v-if="showAccessNumber === true"
-      class="iconfont thinktank-eye">
+      class="iconfont reco-eye">
       <AccessNumber
         :idVal="pageInfo.path"
         :numStyle="numStyle" />
     </i>
     <i
       v-if="pageInfo.frontmatter.tags"
-      class="iconfont thinktank-tag tags">
+      class="iconfont reco-tag tags">
       <span
         v-for="(subItem, subIndex) in pageInfo.frontmatter.tags"
         :key="subIndex"
         class="tag-item"
         :class="{ 'active': currentTag == subItem }"
-        @click="goTags(subItem)">
-        {{subItem}}
-      </span>
+        @click.stop="goTags(subItem)">{{subItem}}</span>
     </i>
   </div>
 </template>
@@ -85,7 +83,9 @@ export default {
   },
   methods: {
     goTags (tag) {
-      this.$router.push({ path: `/tags/${tag}/` })
+      if (this.$route.path !== `/tag/${tag}/`) {
+        this.$router.push({ path: `/tag/${tag}/` })
+      }
     }
   }
 }
@@ -101,7 +101,6 @@ export default {
     margin-left 0.5rem
 .tags
   .tag-item
-    cursor pointer
     font-family Ubuntu, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
     &.active
       color $accentColor

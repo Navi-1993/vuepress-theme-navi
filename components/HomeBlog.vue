@@ -1,28 +1,29 @@
 <template>
   <div class="home-blog">
     <div class="hero" :style="{ ...bgImageStyle }">
-      <div
-        class="mask"
-        :style="{
-      background: `url(${$frontmatter.bgImage ? $withBase($frontmatter.bgImage) : require('../images/home-bg.jpg')}) center/cover no-repeat`}"></div>
-      <ModuleTransition>
-        <img
-          v-if="recoShowModule && $frontmatter.heroImage"
-          :style="heroImageStyle || {}"
-          :src="$withBase($frontmatter.heroImage)"
-          alt="hero">
-      </ModuleTransition>
-      <ModuleTransition delay="0.04">
-        <h1 v-if="recoShowModule && $frontmatter.heroText !== null">
-          {{ $frontmatter.heroText || $title || 'vuePress-theme-thinktank' }}
-        </h1>
-      </ModuleTransition>
+      <div>
+        <ModuleTransition>
+          <img
+            class="hero-img"
+            v-if="recoShowModule && $frontmatter.heroImage"
+            :style="heroImageStyle || {}"
+            :src="$withBase($frontmatter.heroImage)"
+            alt="hero"
+          />
+        </ModuleTransition>
 
-      <ModuleTransition delay="0.08">
-        <p v-if="recoShowModule && $frontmatter.tagline !== null" class="description">
-          {{ $frontmatter.tagline || $description || 'Welcome to your vuePress-theme-thinktank site' }}
-        </p>
-      </ModuleTransition>
+        <ModuleTransition delay="0.04">
+          <h1 v-if="recoShowModule && $frontmatter.heroText !== null">
+            {{ $frontmatter.heroText || $title || 'vuePress-theme-reco' }}
+          </h1>
+        </ModuleTransition>
+
+        <ModuleTransition delay="0.08">
+          <p v-if="recoShowModule && $frontmatter.tagline !== null" class="description">
+            {{ $frontmatter.tagline || $description || 'Welcome to your vuePress-theme-reco site' }}
+          </p>
+        </ModuleTransition>
+      </div>
     </div>
 
     <ModuleTransition delay="0.16">
@@ -41,7 +42,7 @@
         </div>
         <div class="info-wrapper">
           <PersonalInfo/>
-          <h4><i class="iconfont thinktank-category"></i> {{homeBlogCfg.category}}</h4>
+          <h4><i class="iconfont reco-category"></i> {{homeBlogCfg.category}}</h4>
           <ul class="category-wrapper">
             <li class="category-item" v-for="(item, index) in this.$categories.list" :key="index">
               <router-link :to="item.path">
@@ -51,9 +52,9 @@
             </li>
           </ul>
           <hr>
-          <h4 v-if="$tags.list.length !== 0"><i class="iconfont thinktank-tag"></i> {{homeBlogCfg.tag}}</h4>
+          <h4 v-if="$tags.list.length !== 0"><i class="iconfont reco-tag"></i> {{homeBlogCfg.tag}}</h4>
           <TagList @getCurrentTag="getPagesByTags" />
-          <h4 v-if="$themeConfig.friendLink && $themeConfig.friendLink.length !== 0"><i class="iconfont thinktank-friend"></i> {{homeBlogCfg.friendLink}}</h4>
+          <h4 v-if="$themeConfig.friendLink && $themeConfig.friendLink.length !== 0"><i class="iconfont reco-friend"></i> {{homeBlogCfg.friendLink}}</h4>
           <FriendLink />
         </div>
       </div>
@@ -87,7 +88,7 @@ export default {
   },
   computed: {
     homeBlogCfg () {
-      return this.$recoLocals.homeBlog
+      return this.$recoLocales.homeBlog
     },
     actionLink () {
       const {
@@ -101,16 +102,17 @@ export default {
       }
     },
     heroImageStyle () {
-      return this.$frontmatter.heroImageStyle || {
-        maxHeight: '200px',
-        margin: '6rem auto 1.5rem'
-      }
+      return this.$frontmatter.heroImageStyle || {}
     },
     bgImageStyle () {
       const initBgImageStyle = {
-        height: '350px',
         textAlign: 'center',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        background: `
+          url(${this.$frontmatter.bgImage
+    ? this.$withBase(this.$frontmatter.bgImage)
+    : require('../images/bg.svg')}) center/cover no-repeat
+        `
       }
       const {
         bgImageStyle
@@ -159,43 +161,24 @@ export default {
 
 <style lang="stylus">
 .home-blog {
-  padding: $navbarHeight 0 0;
+  padding: 0;
   margin: 0px auto;
-
   .hero {
     position relative
-    .mask {
-      position absolute
-      top 0
-      bottom 0
-      left 0
-      right 0
-      z-index -1
-      &:after {
-        display block
-        content ' '
-        background var(--mask-color)
-        position absolute
-        top 0
-        bottom 0
-        left 0
-        right 0
-        z-index 0
-        opacity .2
-      }
-    }
-    figure {
-      position absolute
-      background yellow
+    box-sizing border-box
+    padding 0 20px
+    height 100vh
+    display flex
+    align-items center
+    justify-content center
+    .hero-img {
+      max-width: 300px;
+      margin: 0 auto 1.5rem
     }
 
     h1 {
-      margin:7rem auto 1.8rem;
+      margin:0 auto 1.8rem;
       font-size: 2.5rem;
-    }
-
-    h1, .description, .action, .huawei {
-      color #fff
     }
 
     .description {
@@ -208,7 +191,8 @@ export default {
     display flex
     align-items: flex-start;
     margin 20px auto 0
-    max-width 1126px
+    padding 0 20px
+    max-width $homePageWidth
     .blog-list {
       flex auto
       width 0
@@ -219,20 +203,21 @@ export default {
       }
     }
     .info-wrapper {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 70px;
+      position -webkit-sticky;
+      position sticky;
+      top 70px
+      overflow hidden
       transition all .3s
-      margin-left 15px;
+      margin-left 15px
       flex 0 0 300px
-      height auto;
-      box-shadow var(--box-shadow);
+      height auto
+      box-shadow var(--box-shadow)
       border-radius $borderRadius
       box-sizing border-box
       padding 0 15px
       background var(--background-color)
       &:hover {
-        box-shadow: var(--box-shadow-hover);
+        box-shadow var(--box-shadow-hover)
       }
       h4 {
         color var(--text-color)
@@ -249,10 +234,14 @@ export default {
           background-color var(--background-color)
           &:hover {
             transform scale(1.04)
+            a {
+              color $accentColor
+            }
           }
           a {
             display flex
             justify-content: space-between
+            color var(--text-color)
             .post-num {
               width 1.6rem;
               height 1.6rem
@@ -260,7 +249,7 @@ export default {
               line-height 1.6rem
               border-radius $borderRadius
               background #eee
-              font-size .6rem
+              font-size 13px
               color #fff
             }
           }
@@ -272,10 +261,7 @@ export default {
 
 @media (max-width: $MQMobile) {
   .home-blog {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
     .hero {
-      margin 0 -1.5rem
       height 450px
       img {
         max-height: 210px;
@@ -283,12 +269,8 @@ export default {
       }
 
       h1 {
-        margin: 6rem auto 1.8rem ;
+        margin: 0 auto 1.8rem ;
         font-size: 2rem;
-      }
-
-      h1, .description, .action {
-        // margin: 1.2rem auto;
       }
 
       .description {
@@ -301,8 +283,16 @@ export default {
       }
     }
     .home-blog-wrapper {
+      display block!important
+      .blog-list {
+        width auto
+      }
       .info-wrapper {
-        display none!important
+        // display none!important
+        margin-left 0
+        .personal-info-wrapper {
+          display none
+        }
       }
     }
   }
@@ -310,19 +300,15 @@ export default {
 
 @media (max-width: $MQMobileNarrow) {
   .home-blog {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-
     .hero {
-      margin 0 -1.5rem
-      height 350px
+      height 450px
       img {
         max-height: 210px;
         margin: 2rem auto 1.2rem;
       }
 
       h1 {
-        margin: 6rem auto 1.8rem ;
+        margin: 0 auto 1.8rem ;
         font-size: 2rem;
       }
 
@@ -341,8 +327,16 @@ export default {
     }
 
     .home-blog-wrapper {
+      display block!important
+      .blog-list {
+        width auto
+      }
       .info-wrapper {
-        display none!important
+        // display none!important
+        margin-left 0
+        .personal-info-wrapper {
+          display none
+        }
       }
     }
   }

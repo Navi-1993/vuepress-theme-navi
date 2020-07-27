@@ -1,11 +1,15 @@
 <template>
   <div class="footer-wrapper">
+    <span>
+      <i class="iconfont reco-theme"></i>
+      <a target="blank" href="https://vuepress-theme-reco.recoluan.com">{{`vuepress-theme-reco@${version}`}}</a>
+    </span>
     <span v-if="$themeConfig.record">
-      <i class="iconfont thinktank-beian"></i>
+      <i class="iconfont reco-beian"></i>
       <a :href="$themeConfig.recordLink || '#'">{{ $themeConfig.record }}</a>
     </span>
     <span>
-      <i class="iconfont thinktank-copyright"></i>
+      <i class="iconfont reco-copyright"></i>
       <a>
         <span v-if="$themeConfig.author || $site.title">{{ $themeConfig.author || $site.title }}</span>
         &nbsp;&nbsp;
@@ -13,14 +17,15 @@
         {{ new Date().getFullYear() }}
       </a>
     </span>
-    <span v-show="$themeConfig.valineConfig !== undefined">
-      <i class="iconfont thinktank-eye"></i>
+    <span v-show="showAccessNumber">
+      <i class="iconfont reco-eye"></i>
       <AccessNumber idVal="/" />
     </span>
     <p class="cyber-security" v-if="$themeConfig.cyberSecurityRecord">
       <img src="https://img.alicdn.com/tfs/TB1..50QpXXXXX7XpXXXXXXXXXX-40-40.png" alt="">
       <a :href="$themeConfig.cyberSecurityLink || '#'">{{ $themeConfig.cyberSecurityRecord }}</a>
     </p>
+    <Comments :isShowComments="false"/>
   </div>
 </template>
 
@@ -30,6 +35,20 @@ export default {
   data () {
     return {
       version
+    }
+  },
+  computed: {
+    showAccessNumber () {
+      const {
+        $themeConfig: { valineConfig },
+        $themeLocaleConfig: { valineConfig: valineLocalConfig }
+      } = this
+
+      const vc = valineLocalConfig || valineConfig
+      if (vc && vc.visitor != false) {
+        return true
+      }
+      return false
     }
   }
 }

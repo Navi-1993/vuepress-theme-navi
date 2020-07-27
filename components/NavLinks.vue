@@ -23,7 +23,7 @@
       class="repo-link"
       target="_blank"
       rel="noopener noreferrer">
-      <i :class="`iconfont thinktank-${repoLabel.toLowerCase()}`"></i>
+      <i :class="`iconfont reco-${repoLabel.toLowerCase()}`"></i>
       {{ repoLabel }}
       <OutboundLink/>
     </a>
@@ -100,7 +100,7 @@ export default {
           }),
           text: category.text || '分类',
           type: 'links',
-          icon: 'thinktank-category'
+          icon: 'reco-category'
         })
       }
       if (!isHasTag && Object.hasOwnProperty.call(blogConfig, 'tag')) {
@@ -109,7 +109,7 @@ export default {
           link: '/tag/',
           text: tag.text || '标签',
           type: 'links',
-          icon: 'thinktank-tag'
+          icon: 'reco-tag'
         })
       }
 
@@ -184,5 +184,4 @@ export default {
   .nav-item > a:not(.external)
     &:hover, &.router-link-active
       margin-bottom -2px
-      border-bottom 2px solid lighten($accentColor, 8%)
 </style>

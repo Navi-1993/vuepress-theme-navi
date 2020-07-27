@@ -4,7 +4,7 @@
 @require './arrow'
 @require './wrapper'
 @require './toc'
-@require './iconfont.css'
+// @require './iconfont.css'
 
 html, body
   padding 0
@@ -56,8 +56,6 @@ body
 
 .content__default:not(.custom)
   @extend $wrapper
-  // > *:first-child
-  //   margin-top 1.6rem
   a:hover
     text-decoration underline
   p.demo
@@ -70,6 +68,10 @@ body
 .content__default.custom
   padding 0
   margin 0
+  img
+    max-width 100%
+
+.abstract
   img
     max-width 100%
 
@@ -109,24 +111,16 @@ h1, h2, h3, h4, h5, h6
   font-weight 500
   line-height 1.25
   .content__default:not(.custom) > &
-    margin-top (0.5rem - $navbarHeight)
-    padding-top ($navbarHeight + 1rem)
-    margin-bottom 0
-    &:first-child
-      margin-top -3.5rem
-      margin-bottom 1rem
-      + p, + pre, + .custom-block
-        margin-top 2rem
-  &:hover .header-anchor
-    opacity: 1
+    margin-top 1.2rem
+    margin-bottom 1rem
 
 h1
   font-size 1.6rem
 
 h2
+  padding-left 0.8rem
   font-size 1.4rem
-  padding-bottom .3rem
-  border-bottom 1px solid var(--border-color)
+  border-left 5px solid $accentColor
 
 h3
   font-size 1.2rem
@@ -145,7 +139,7 @@ code, kbd, .line-number
   font-family source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
 
 p, ul, ol
-  line-height 1.7
+  line-height 2.2
 
 hr
   border 0
