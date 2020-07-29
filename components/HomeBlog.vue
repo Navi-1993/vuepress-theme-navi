@@ -159,7 +159,7 @@ export default {
 <style lang="stylus">
 .home-blog {
   padding: 0;
-  margin: 0px auto;
+  margin: 0 auto;
   .hero {
     position relative
     box-sizing border-box
