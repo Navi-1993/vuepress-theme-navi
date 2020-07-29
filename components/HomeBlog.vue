@@ -60,9 +60,6 @@
       </div>
     </ModuleTransition>
 
-    <ModuleTransition delay="0.24">
-      <Content v-show="recoShowModule" class="home-center" custom/>
-    </ModuleTransition>
   </div>
 </template>
 
@@ -190,7 +187,7 @@ export default {
   .home-blog-wrapper {
     display flex
     align-items: flex-start;
-    margin 20px auto 0
+    margin 20px auto
     padding 0 20px
     max-width $homePageWidth
     .blog-list {
@@ -198,7 +195,7 @@ export default {
       width 0
       .abstract-wrapper {
         .abstract-item:last-child {
-          margin-bottom: 0px;
+          margin-bottom: 0;
         }
       }
     }
