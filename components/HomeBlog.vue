@@ -60,6 +60,9 @@
       </div>
     </ModuleTransition>
 
+    <ModuleTransition delay="0.24">
+      <Content v-show="recoShowModule" class="home-center" custom/>
+    </ModuleTransition>
   </div>
 </template>
 
@@ -159,8 +162,9 @@ export default {
 <style lang="stylus">
 .home-blog {
   padding: 0;
-  margin: 0 auto;
+  margin: 0px auto;
   .hero {
+    margin $navbarHeight auto 0
     position relative
     box-sizing border-box
     padding 0 20px
@@ -187,7 +191,7 @@ export default {
   .home-blog-wrapper {
     display flex
     align-items: flex-start;
-    margin 20px auto
+    margin 20px auto 0
     padding 0 20px
     max-width $homePageWidth
     .blog-list {
@@ -195,7 +199,7 @@ export default {
       width 0
       .abstract-wrapper {
         .abstract-item:last-child {
-          margin-bottom: 0;
+          margin-bottom: 0px;
         }
       }
     }
