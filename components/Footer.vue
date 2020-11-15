@@ -1,11 +1,11 @@
 <template>
   <div class="footer-wrapper">
     <span v-if="$themeConfig.record">
-      <i class="iconfont reco-beian"></i>
+      <reco-icon icon="reco-beian" />
       <a :href="$themeConfig.recordLink || '#'">{{ $themeConfig.record }}</a>
     </span>
     <span>
-      <i class="iconfont reco-copyright"></i>
+      <reco-icon icon="reco-copyright" />
       <a>
         <span v-if="$themeConfig.author || $site.title">{{ $themeConfig.author || $site.title }}</span>
         &nbsp;&nbsp;
@@ -14,7 +14,7 @@
       </a>
     </span>
     <span v-show="showAccessNumber">
-      <i class="iconfont reco-eye"></i>
+      <reco-icon icon="reco-eye" />
       <AccessNumber idVal="/" />
     </span>
     <p class="cyber-security" v-if="$themeConfig.cyberSecurityRecord">
@@ -26,8 +26,11 @@
 </template>
 
 <script>
+import { RecoIcon } from '@vuepress-reco/core'
 import { version } from '../package.json'
 export default {
+  components: { RecoIcon },
+
   data () {
     return {
       version

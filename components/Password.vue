@@ -24,7 +24,7 @@
     <ModuleTransition delay="0.24">
       <div v-show="recoShowModule" class="footer">
         <span>
-          <i class="iconfont reco-copyright"></i>
+          <reco-icon icon="reco-copyright" />
           <a>
             <span v-if="$themeConfig.author || $site.title">{{ $themeConfig.author || $site.title }}</span>
             &nbsp;&nbsp;
@@ -38,13 +38,14 @@
 </template>
 
 <script>
+import { RecoIcon } from '@vuepress-reco/core'
 import md5 from 'md5'
 import ModuleTransition from '@theme/components/ModuleTransition'
 import moduleTransitonMixin from '@theme/mixins/moduleTransiton'
 
 export default {
   mixins: [moduleTransitonMixin],
-  components: { ModuleTransition },
+  components: { ModuleTransition, RecoIcon },
   props: {
     isPage: {
       type: Boolean,
